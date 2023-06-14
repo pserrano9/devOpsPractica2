@@ -13,7 +13,7 @@ resource "azurerm_linux_virtual_machine" "myVM1" {
         #username = "adminUsername"
         #public_key = file("~/.ssh/id_rsa.pub")
         #public_key = tls_private_key.example_ssh.public_key_openssh 
-    }
+    #}
 
     os_disk {
         caching = "ReadWrite"
