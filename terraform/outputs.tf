@@ -10,6 +10,6 @@ output "public_ip_address" {
 
 # Mostramos la key del admin
 output "tls_private_key" {
-  value     = tls_private_key.example_ssh.private_key_pem
+  value     = tls_private_key.sshKey.public_key_openssh
   sensitive = true
 }
