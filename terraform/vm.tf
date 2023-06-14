@@ -8,9 +8,15 @@ resource "azurerm_linux_virtual_machine" "myVM1" {
     network_interface_ids = [ azurerm_network_interface.myNic1.id ]
     disable_password_authentication = true
 
+    # Creamos una SSH key
+    resource "tls_private_key" "sshKey" {
+     algorithm = "RSA"
+     rsa_bits  = 4096
+    }
+    
     admin_ssh_key {
         username = "adminUsername"
-        public_key = file("~/.ssh/id_rsa.pub")
+        public_key = tls_private_key.sshKey.public_key_openssh
     }
 
     os_disk {
