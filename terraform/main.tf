@@ -26,7 +26,7 @@ resource "azurerm_storage_account" "stAccount"{
   }
 
  # Creamos una SSH key
- resource "tls_private_key" "demo_key" {
-  algorithm = "RSA"
-  rsa_bits  = 4096
+  resource "tls_private_key" "example_ssh" {
+    algorithm = "RSA"
+    rsa_bits = 4096
 }
