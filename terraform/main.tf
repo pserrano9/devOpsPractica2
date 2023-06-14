@@ -24,4 +24,3 @@ resource "azurerm_storage_account" "stAccount"{
   account_replication_Type = "LRS"
  
   }
-}
