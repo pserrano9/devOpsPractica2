@@ -5,7 +5,7 @@ resource "azurerm_linux_virtual_machine" "myVM1" {
     location            = azurerm_resource_group.rg.location
     size                = "Standard_D1_v2"
     admin_username      = "adminUsername"
-    admin_password      = "P@$$w0rd1234!"
+    admin_password      = "P@SSw0rd1234!"
     network_interface_ids = [ azurerm_network_interface.myNic1.id ]
     disable_password_authentication = false
     #disable_password_authentication = true
