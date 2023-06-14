@@ -4,14 +4,14 @@ resource "azurerm_linux_virtual_machine" "myVM1" {
     resource_group_name = azurerm_resource_group.rg.name
     location            = azurerm_resource_group.rg.location
     size                = "Standard_D1_v2"
-    admin_username      = "admin"
+    admin_username      = "adminUsername"
     #admin_password      = "P@$$w0rd1234!"
     network_interface_ids = [ azurerm_network_interface.myNic1.id ]
     #disable_password_authentication = false
     disable_password_authentication = true
    
     admin_ssh_key {
-        username = "admin"
+        username = "adminUsername"
         #public_key = file("~/.ssh/id_rsa.pub")
         public_key = tls_private_key.example_ssh.public_key_openssh 
     }
