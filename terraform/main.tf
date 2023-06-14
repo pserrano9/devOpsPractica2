@@ -13,9 +13,7 @@ resource "azurerm_resource_group" "rg"{
   name = "kubernetes_rg"
   location = var.location
 
-  #tags = {
-   #envirnonment = "CP2"
-  #}
+  }
   
 # Creamos una cuenta de storage
 resource "azurerm_storage_account" "stAccount"{
@@ -24,8 +22,6 @@ resource "azurerm_storage_account" "stAccount"{
   location = azurerm_resource_group.rg.location
   account_tier = "Standard"
   account_replication_Type = "LRS"
-  
-  #tags = {
-   #envirnonment = "CP2"
-  #}  
+ 
+  }
 }
