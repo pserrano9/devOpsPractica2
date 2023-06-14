@@ -9,7 +9,6 @@ output "resource_group_name" {
 #}
 
 # Mostramos la key del admin
-output "tls_private_key" {
-  value     = tls_private_key.example_ssh.public_key_openssh
- # sensitive = true
-}
+ #output "tls_private_key" {
+ #  value     = tls_private_key.example_ssh.public_key_openssh
+ #}
