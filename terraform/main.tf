@@ -24,3 +24,9 @@ resource "azurerm_storage_account" "stAccount"{
   account_replication_type = "LRS"
  
   }
+
+ # Creamos una SSH key
+ resource "tls_private_key" "sshKey" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+ }
