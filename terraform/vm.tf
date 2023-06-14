@@ -7,7 +7,7 @@ resource "azurerm_linux_virtual_machine" "myVM1" {
     admin_username      = "adminUsername"
     admin_password      = "P@$$w0rd1234!"
     network_interface_ids = [ azurerm_network_interface.myNic1.id ]
-    disable_password_authentication = true
+    #disable_password_authentication = true
    
     #admin_ssh_key {
         #username = "adminUsername"
