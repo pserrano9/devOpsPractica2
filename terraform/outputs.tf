@@ -4,12 +4,12 @@ output "resource_group_name" {
 }
 
 # Mostramos la Ip Publica creada para conectarnos a la Maquina virtual
-output "public_ip_address" {
-  value = azurerm_public_ip.myPublicIp1.id
-}
+#output "public_ip_address" {
+ # value = azurerm_public_ip.myPublicIp1.id
+#}
 
 # Mostramos la key del admin
-output "tls_private_key" {
-  value     = tls_private_key.sshKey.public_key_openssh
-  sensitive = true
-}
+#output "tls_private_key" {
+  #value     = tls_private_key.sshKey.public_key_openssh
+ # sensitive = true
+#}
