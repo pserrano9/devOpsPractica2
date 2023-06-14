@@ -7,14 +7,14 @@ resource "azurerm_linux_virtual_machine" "myVM1" {
     admin_username      = "adminUsername"
     admin_password      = "P@SSw0rd1234!"
     network_interface_ids = [ azurerm_network_interface.myNic1.id ]
-    disable_password_authentication = false
-    #disable_password_authentication = true
+    #disable_password_authentication = false
+    disable_password_authentication = true
    
-    #admin_ssh_key {
-        #username = "adminUsername"
-        #public_key = file("~/.ssh/id_rsa.pub")
+    admin_ssh_key {
+        username = "adminUsername"
+        public_key = file("~/.ssh/id_rsa.pub")
         #public_key = tls_private_key.example_ssh.public_key_openssh 
-    #}
+    }
 
     os_disk {
         caching = "ReadWrite"
