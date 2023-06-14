@@ -12,7 +12,6 @@ terraform {
 resource "azurerm_resource_group" "rg"{
   name = "kubernetes_rg"
   location = var.location
-
   }
   
 # Creamos una cuenta de storage
@@ -22,11 +21,4 @@ resource "azurerm_storage_account" "stAccount"{
   location = azurerm_resource_group.rg.location
   account_tier = "Standard"
   account_replication_type = "LRS"
- 
   }
-
- # Creamos una SSH key
-   #resource "tls_private_key" "example_ssh" {
-   #  algorithm = "RSA"
-   #  rsa_bits = 4096
- #}
