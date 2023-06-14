@@ -23,9 +23,9 @@ resource "azurerm_network_interface" "myNicl" {
     ip_configuration {
       name = "myipconfiguration1"
       subnet_id = azurerm_subnet.mySubnet.id
-      private_ip_addess_allocation = "Static"
-      private_ip_addess = "10.0.1.10"
-      public_ip_addess_id = azurerm_public_ip.myPublicIp1.id
+      private_ip_address_allocation = "Static"
+      private_ip_address = "10.0.1.10"
+      public_ip_address_id = azurerm_public_ip.myPublicIp1.id
     }
 }
 
