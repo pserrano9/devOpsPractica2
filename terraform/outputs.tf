@@ -3,6 +3,15 @@ output "resource_group_name" {
   value = azurerm_resource_group.rg.name
 }
 
+output "acr_login_server" {
+  value = azurerm_container_registry.acr.login_server
+}
+
+output "acr_admin_user" {
+  value     = azurerm_container_registry.acr.admin_username
+  sensitive = true
+}
+
 # Mostramos la Ip Publica creada para conectarnos a la Maquina virtual
 #output "public_ip_address" {
  # value = azurerm_public_ip.myPublicIp1.id
