@@ -12,6 +12,11 @@ output "acr_admin_user" {
   sensitive = true
 }
 
+output "acr_admin_pass" {
+  value     = azurerm_container_registry.acr.admin_password
+  sensitive = true
+}
+
 # Mostramos la Ip Publica creada para conectarnos a la Maquina virtual
 #output "public_ip_address" {
  # value = azurerm_public_ip.myPublicIp1.id
