@@ -1,6 +1,6 @@
 # Generate random resource group name
 resource "random_pet" "rg_name" {
-  prefix = var.resource_group_name_prefix
+  prefix = "rg"
 }
 
 resource "random_pet" "azurerm_kubernetes_cluster_name" {
@@ -24,7 +24,7 @@ resource "azurerm_kubernetes_cluster" "k8s" {
   default_node_pool {
     name       = "agentpool"
     vm_size    = "Standard_D2_v2"
-    node_count = var.node_count
+    node_count = 3
   }
   linux_profile {
     admin_username = "ubuntu"
