@@ -5,6 +5,25 @@ terraform {
       source = "hashicorp/azurerm"
       version = "=2.46.1"
      }
+
+    # COMENTAR
+    azapi = {
+      source  = "azure/azapi"
+      version = "~>1.5"
+    }
+    # COMENTAR
+    azapi = {
+    random = {
+      source  = "hashicorp/random"
+      version = "~>3.0"
+    }
+
+    # COMENTAR
+    azapi = {
+    time = {
+      source  = "hashicorp/time"
+      version = "0.9.1"
+    }
   }
 }
 
