@@ -1,16 +1,3 @@
-# Generate random resource group name
- #resource "random_pet" "rg_name" {
-  # prefix = "rg"
- #}
-
- #resource "random_pet" "azurerm_kubernetes_cluster_name" {
-  # prefix = "cluster"
- #}
-
- #resource "random_pet" "azurerm_kubernetes_cluster_dns_prefix" {
-  # prefix = "dns"
- #}
-
 resource "azurerm_kubernetes_cluster" "k8s" {
   location            = azurerm_resource_group.rg.location
   name                = "cluster"
