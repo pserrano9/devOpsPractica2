@@ -7,24 +7,31 @@
   tasks:
     - name: 'Instalar Podman y resto de componentes'
       command: sudo dnf -y install podman httpd-tools openssl
+      ignore_errors: True
 
     - name: 'Creamos un directorio para nuestra aplicación Web'
-      command: mkdir webserver && cd webserver   
+      command: mkdir webserver && cd webserver
+      ignore_errors: True
       
     - name: 'Creamos un fichero para nuestra BBDD de usuarios que se puedan autenticar en nuestra aplicación Web'
       command: htpasswd -cBb .cred test D3v0ps.2023
+      ignore_errors: True
 
     - name: 'Creación de clave para generar Certificado autofirmado'
       command: openssl genrsa -out localhost.key 2048
+      ignore_errors: True
 
     - name: 'Solicitud del Certificado'
       command: openssl req -key localhost.key -new -out localhost.csr -subj "/C=ES/ST=Madrid/L=Madrid/O=DevOps/OU=Ejemplo/CN=vml"
+      ignore_errors: True
 
     - name: 'Generamos el Certificado'
-      command: openssl x509 -signkey localhost.key -in localhost.csr -req -days 365 -out localhost.crt 
+      command: openssl x509 -signkey localhost.key -in localhost.csr -req -days 365 -out localhost.crt
+      ignore_errors: True
 
     - name: 'Creamos un fichero index para el frontal de nuestro Servicio'
       command: echo "Servicio Web de Pablo" > index.html
+      ignore_errors: True
       
     - name: 'Copiamos el fihero httpd'
       ansible.builtin.copy:
