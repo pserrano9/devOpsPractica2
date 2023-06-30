@@ -23,17 +23,17 @@
     - name: 'Generamos el Certificado'
       command: openssl x509 -signkey localhost.key -in localhost.csr -req -days 365 -out localhost.crt 
 
-     - name: 'Creamos un fichero index para el frontal de nuestro Servicio'
+    - name: 'Creamos un fichero index para el frontal de nuestro Servicio'
       command: echo "Servicio Web de Pablo" > index.html
       
-     - name: Copy file with owner and permissions
-       ansible.builtin.copy:
-       src: /configFiles/httpd.conf
-       dest: 
-       mode: '0644'
+    - name: Copy file with owner and permissions
+      ansible.builtin.copy:
+      src: /configFiles/httpd.conf
+      dest: 
+      mode: '0644'
 
-     - name: Copy file with owner and permissions
-       ansible.builtin.copy:
-       src: /configFiles/htaccess.txt
-       dest: 
-       mode: '0644'
+    - name: Copy file with owner and permissions
+      ansible.builtin.copy:
+      src: /configFiles/htaccess.txt
+      dest: 
+      mode: '0644'
