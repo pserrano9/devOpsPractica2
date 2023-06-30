@@ -26,14 +26,8 @@
     - name: 'Creamos un fichero index para el frontal de nuestro Servicio'
       command: echo "Servicio Web de Pablo" > index.html
       
-    - name: 'Copy httpd file'
+    - name: 'Copiamos el fihero httpd'
       ansible.builtin.copy:
-      src: /configFiles/httpd.conf
-      dest: 
-      mode: '0644'
-
-    - name: 'Copy htaccess file'
-      ansible.builtin.copy:
-      src: /configFiles/htaccess.txt
+      src: configFiles/httpd.conf
       dest: 
       mode: '0644'
