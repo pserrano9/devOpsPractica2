@@ -28,6 +28,6 @@
       
     - name: 'Copiamos el fihero httpd'
       ansible.builtin.copy:
-      src: configFiles/httpd.conf
-      dest: 
-      mode: '0644'
+        src: configFiles/httpd.conf
+        dest: 
+        mode: '0644'
