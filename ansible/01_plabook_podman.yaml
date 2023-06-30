@@ -5,5 +5,37 @@
   become: true
 
   tasks:
-    - name: 'T1 - Instalar Podman y resto de componentes'
+    - name: 'Instalar Podman y resto de componentes'
       command: sudo dnf -y install podman httpd-tools openssl
+
+    - name: 'Creamos un directorio para nuestra aplicación Web'
+      command: mkdir webserver && cd webserver   
+      
+    - name: 'Creamos un fichero para nuestra BBDD de usuarios que se puedan autenticar en nuestra aplicación Web'
+      command: htpasswd -cBb .cred test D3v0ps.2023
+
+    - name: 'Creación de clave para generar Certificado autofirmado'
+      command: openssl genrsa -out localhost.key 2048
+
+    - name: 'Solicitud del Certificado'
+      command: openssl req -key localhost.key -new -out localhost.csr -subj "/C=ES/ST=Madrid/L=Madrid/O=DevOps/OU=Ejemplo/CN=vml"
+
+    - name: 'Generamos el Certificado'
+      command: openssl x509 -signkey localhost.key -in localhost.csr -req -days 365 -out localhost.crt 
+
+     - name: 'Creamos un fichero index para el frontal de nuestro Servicio'
+      command: echo "Servicio Web de Pablo" > index.html
+      
+     - name: Copy file with owner and permissions
+       ansible.builtin.copy:
+       src: /srv/myfiles/foo.conf
+       dest: /etc/foo.conf
+       owner: foo
+       group: foo
+       mode: '0644'
+
+     - name: ''
+      command: 
+
+     - name: ''
+      command: 
