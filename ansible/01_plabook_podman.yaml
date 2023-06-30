@@ -10,9 +10,13 @@
       ignore_errors: True
 
     - name: 'Creamos un directorio para nuestra aplicación Web'
-      command: mkdir webserver && cd webserver
+      command: mkdir webserver
       ignore_errors: True
       
+    - name: 'Nos movemos al directorio'
+      command: cd webserver
+      ignore_errors: True
+    
     - name: 'Creamos un fichero para nuestra BBDD de usuarios que se puedan autenticar en nuestra aplicación Web'
       command: htpasswd -cBb .creds test D3v0ps.2023
       ignore_errors: True
