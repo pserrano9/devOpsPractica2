@@ -26,7 +26,7 @@
       ignore_errors: True
 
     - name: 'Generamos el Certificado'
-      command: openssl x509 -signkey ./webserver/localhost.key -in localhost.csr -req -days 365 -out ./webserver/localhost.crt
+      command: openssl x509 -signkey ./webserver/localhost.key -in ./webserver/localhost.csr -req -days 365 -out ./webserver/localhost.crt
       ignore_errors: True
      
     - name: 'Copiamos el fihero httpd'
