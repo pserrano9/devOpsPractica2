@@ -1,0 +1,9 @@
+---
+- name: 'Podman'
+  hosts: webservers
+  remote_user: adminUsername
+  become: true
+
+  tasks:
+    - name: 'T1 - Instalar Podman y resto de componentes'
+      command: sudo dnf -y install podman httpd-tools openssl
