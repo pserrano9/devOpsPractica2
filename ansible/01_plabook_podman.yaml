@@ -54,5 +54,5 @@
         mode: '0644'
         
     - name: 'Generamos nuestra imagen de contenedor'
-      command: sudo podman build -t webserver .
+      command: sudo podman build -t webserver ./wevserver
         
