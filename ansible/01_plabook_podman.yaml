@@ -45,4 +45,10 @@
       ansible.builtin.copy:
         src: configFiles/index.html
         dest: ./webserver
-        mode: '0644'       
+        mode: '0644'
+
+    - name: 'Copiamos el fihero de la imagen del contenedor'
+      ansible.builtin.copy:
+        src: configFiles/Containerfile
+        dest: ./webserver
+        mode: '0644'     
