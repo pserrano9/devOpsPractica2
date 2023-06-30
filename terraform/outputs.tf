@@ -6,7 +6,7 @@ output "resource_group_name" {
 # IP Publica de la VM
 output "VM-IP" {
      description = "The VM Public IP is:"
-     value = azurerm_public_ip.vm1publicip.ip_address
+     value = azurerm_public_ip.myPublicIp1.ip_address
  }    
 
 output "acr_login_server" {
