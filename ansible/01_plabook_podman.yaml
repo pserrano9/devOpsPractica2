@@ -28,11 +28,7 @@
     - name: 'Generamos el Certificado'
       command: openssl x509 -signkey localhost.key -in localhost.csr -req -days 365 -out ./webserver/localhost.crt
       ignore_errors: True
-
-    - name: 'Creamos un fichero index para el frontal de nuestro Servicio'
-      command: echo "Servicio Web de Pablo" > ./webserver/index.html
-      ignore_errors: True
-      
+     
     - name: 'Copiamos el fihero httpd'
       ansible.builtin.copy:
         src: configFiles/httpd.conf
@@ -44,3 +40,9 @@
         src: configFiles/.htaccess
         dest: ./webserver
         mode: '0644'   
+
+    - name: 'Copiamos el fihero index'
+      ansible.builtin.copy:
+        src: configFiles/index.html
+        dest: ./webserver
+        mode: '0644'       
