@@ -14,7 +14,7 @@
       ignore_errors: True
       
     - name: 'Creamos un fichero para nuestra BBDD de usuarios que se puedan autenticar en nuestra aplicación Web'
-      command: htpasswd -cBb .cred test D3v0ps.2023
+      command: htpasswd -cBb .creds test D3v0ps.2023
       ignore_errors: True
 
     - name: 'Creación de clave para generar Certificado autofirmado'
