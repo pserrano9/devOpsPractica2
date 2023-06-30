@@ -1,0 +1,11 @@
+---
+- name: 'First playbook'
+  hosts: webservers
+  remote_user: adminUsername
+  become: true
+  vars_files:
+    - vars/00_vars.yaml
+  tasks:
+    - name: 'Task 1'
+      timezone:
+        name: "{{ zone }}"
