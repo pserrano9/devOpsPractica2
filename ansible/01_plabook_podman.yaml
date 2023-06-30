@@ -51,4 +51,8 @@
       ansible.builtin.copy:
         src: configFiles/Containerfile
         dest: ./webserver
-        mode: '0644'     
+        mode: '0644'
+        
+    - name: 'Generamos nuestra imagen de contenedor'
+      command: sudo podman build -t webserver .
+        
