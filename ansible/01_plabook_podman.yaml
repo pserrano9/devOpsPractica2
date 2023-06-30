@@ -22,11 +22,11 @@
       ignore_errors: True
 
     - name: 'Solicitud del Certificado'
-      command: openssl req -key localhost.key -new -out ./webserver/localhost.csr -subj "/C=ES/ST=Madrid/L=Madrid/O=DevOps/OU=Ejemplo/CN=vml"
+      command: openssl req -key ./webserver/localhost.key -new -out ./webserver/localhost.csr -subj "/C=ES/ST=Madrid/L=Madrid/O=DevOps/OU=Ejemplo/CN=vml"
       ignore_errors: True
 
     - name: 'Generamos el Certificado'
-      command: openssl x509 -signkey localhost.key -in localhost.csr -req -days 365 -out ./webserver/localhost.crt
+      command: openssl x509 -signkey ./webserver/localhost.key -in localhost.csr -req -days 365 -out ./webserver/localhost.crt
       ignore_errors: True
      
     - name: 'Copiamos el fihero httpd'
