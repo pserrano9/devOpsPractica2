@@ -54,5 +54,5 @@
       command: sudo podman build -t webserver ./webserver
 
     - name: 'Etiquetamos la imagen para subirla a ACR '
-      command: sudo podman tag localhost/webserver:latest    
+      command: sudo podman tag localhost/webserver:latest "{{ acr_host }}"/webserver:casopractico2    
         
