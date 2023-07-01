@@ -57,6 +57,6 @@
       command: sudo podman tag localhost/webserver:latest acrdevopspablo.azurecr.io/webserver:casopractico2
       
     - name: 'Nos autenticamos en ACR'
-      command: sudo
+      command: sudo podman login -u testuser -p testpassword localhost:5000
       
         
