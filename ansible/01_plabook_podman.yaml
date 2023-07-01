@@ -53,6 +53,10 @@
     - name: 'Generamos nuestra imagen de contenedor'
       command: sudo podman build -t webserver ./webserver
 
-    - name: 'Etiquetamos la imagen para subirla a ACR '
-      command: sudo podman tag localhost/webserver:latest acrdevopspablo.azurecr.io/webserver:casopractico2    
+    - name: 'Etiquetamos la imagen para subirla a ACR'
+      command: sudo podman tag localhost/webserver:latest acrdevopspablo.azurecr.io/webserver:casopractico2
+      
+    - name: 'Nos autenticamos en ACR'
+      command: sudo
+      
         
