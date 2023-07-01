@@ -1,1 +1,1 @@
-acr_host: acrdevopspablo.azurecr.io
+acr_host: 'acrdevopspablo.azurecr.io'
