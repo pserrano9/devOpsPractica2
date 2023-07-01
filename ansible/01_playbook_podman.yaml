@@ -74,6 +74,6 @@
     - name: 'Recargamos la información'
       command: sudo systemctl daemon-reload
 
-    - name: 'Iniciarlizamos el Servicio y que persista a los reinicios de la máquina'
+    - name: 'Inicializamos el Servicio y que persista a los reinicios de la máquina'
       command: sudo systemctl enable container-web.service --now 
       
