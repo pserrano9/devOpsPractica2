@@ -42,7 +42,7 @@ output "cluster_ca_certificate" {
   #sensitive = true
 }
 
-#output "cluster_password" {
+output "cluster_password" {
   value     = azurerm_kubernetes_cluster.k8s.kube_config[0].password
   sensitive = true
 }
@@ -52,7 +52,7 @@ output "cluster_username" {
   sensitive = true
 }
 
-#output "host" {
+output "host" {
   value     = azurerm_kubernetes_cluster.k8s.kube_config[0].host
   sensitive = true
 }
