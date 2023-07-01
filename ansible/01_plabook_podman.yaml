@@ -57,6 +57,23 @@
       command: sudo podman tag localhost/webserver:latest acrdevopspablo.azurecr.io/webserver:casopractico2
       
     - name: 'Nos autenticamos en ACR'
-      command: sudo podman login -u testuser -p testpassword localhost:5000
+      command: sudo podman login -u "{{ acr_admin_user }}" -p "{{ acr_admin_pass }}"  "{{ acr_host }}"
       
-        
+    - name: 'Subimos la imagen a ACR'
+      command: sudo podman push acrdevopspablo.azurecr.io/webserver:casopractico2
+
+    - name: 'Creamos el contenedor a partir de la imagen que tenemos en ACR y hacemos la redirección de puertos'
+      command: sudo podman create --name web -p 8080:443 acrdevopspablo.azurecr.io/webserver:casopractico2
+
+    - name: 'Hacemos que el contenedor sea un Servicio en el Sistema Operativo para que podamos inicializar el Servicio Web a traves del SO'
+      command: sudo podman generate systemd --new --files --name web
+
+    - name: 'Copiamos el contenido del Servicio a la ruta que necesita Systemd'
+      command: sudo cp -Z container-web.service /etc/systemd/system
+      
+    - name: 'Recargamos la información'
+      command: sudo systemctl daemon-reload
+
+    - name: 'Iniciarlizamos el Servicio y que persista a los reinicios de la máquina'
+      command: sudo systemctl enable container-web.service --now 
+      
