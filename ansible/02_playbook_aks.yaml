@@ -7,27 +7,22 @@
     - vars/01_vars.yaml
 
   tasks:
-    - name: 'Instalar Podman y resto de componentes'
-      command: sudo dnf -y install podman httpd-tools openssl
 
-    - name: 'Creamos un directorio para nuestra aplicación Web'
+    - name: 'Creamos un directorio de trabajo'
       command: mkdir aks
       ignore_errors: True
-
-    - name: 'Copiamos el fihero de la imagen que vamos a desplegar en AKS'
-      ansible.builtin.copy:
-        src: configFiles/ContainerfileAks
-        dest: ./aks
-        mode: '0644'
-        
-    - name: 'Renombramos el fichero'    
-      command: sudo mv ContainerfileAks Containerfile
       
+    - git:
+      repo: https://github.com/Azure-Samples/azure-voting-app-redis.git
+      dest: /aks
+      archive: /tmp/ansible-examples.zip
+    
     - name: 'Generamos nuestra imagen de contenedor'
       command: sudo podman build -t webserveraks ./aks
 
     - name: 'Etiquetamos la imagen para subirla a ACR'
       command: sudo podman tag localhost/webserveraks:latest acrdevopspablo.azurecr.io/webserveraks:casopractico2aks
+      # docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 <acrLoginServer>/azure-vote-front:v1
       
     - name: 'Nos autenticamos en ACR'
       command: sudo podman login -u "{{ acr_admin_user }}" -p "{{ acr_admin_pass }}"  "{{ acr_host }}"
@@ -35,7 +30,15 @@
     - name: 'Subimos la imagen a ACR'
       command: sudo podman push acrdevopspablo.azurecr.io/webserver:casopractico2aks
 
+    - name: 'Instalar AKS Cli'
+      command: sudo az aks install-cli
+
+    - name: 'Conectamos con nuestro AKS'
+      command: sudo az aks get-credentials --resource-group kubernetes_rg --name cluster 
+
     - name: 'Desplegamos nuestra aplicación en AKS a partir de la imagen que tenemos en ACR'
       command: sudo kubectl apply -f azure-vote-all.yaml
 
-   
+
+
+
