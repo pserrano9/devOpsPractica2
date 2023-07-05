@@ -13,7 +13,6 @@
     - name: 'Creamos un directorio para nuestra aplicación Web'
       command: mkdir aks
       ignore_errors: True
-        
 
     - name: 'Copiamos el fihero de la imagen que vamos a desplegar en AKS'
       ansible.builtin.copy:
