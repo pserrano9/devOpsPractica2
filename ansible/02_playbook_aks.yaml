@@ -15,7 +15,8 @@
       repo: https://github.com/Azure-Samples/azure-voting-app-redis.git
       dest: /aks
       archive: /tmp/ansible-examples.zip
-
+      # sudo dnf -y install git
+      
      - name: 'Copiamos el fichero yaml para desplegar la aplicación en AKS'
       ansible.builtin.copy:
         src: configFiles/azure-vote-all-in-one-redis.yaml
