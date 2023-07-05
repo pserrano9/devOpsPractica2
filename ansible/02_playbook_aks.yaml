@@ -7,7 +7,6 @@
     - vars/01_vars.yaml
 
   tasks:
-
     - name: 'Creamos un directorio de trabajo'
       command: mkdir aks
       ignore_errors: True
