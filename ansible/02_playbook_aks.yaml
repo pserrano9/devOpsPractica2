@@ -37,14 +37,20 @@
     - name: 'Subimos la imagen a ACR'
       command: sudo podman push acrdevopspablo.azurecr.io/webserver:casopractico2aks
 
-    - name: 'Instalar AKS Cli'
-      command: sudo install kubectl
+    - name: 'Instalar AKS Cli - Paso 1'
+      command: curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+
+    - name: 'Instalar AKS Cli - Paso 2'
+      command: chmod +x ./kubectl
+      
+    - name: 'Instalar AKS Cli - Paso 3'
+      command: sudo mv ./kubectl /usr/local/bin/kubectl
 
     - name: 'Conectamos con nuestro AKS'
       command: sudo az aks get-credentials --resource-group kubernetes_rg --name cluster 
 
     - name: 'Desplegamos nuestra aplicación en AKS a partir de la imagen que tenemos en ACR'
-      command: sudo kubectl apply -f aks/azure-vote-all-in-one-redis.yaml
+      command: kubectl apply -f aks/azure-vote-all-in-one-redis.yaml
 
 
 
