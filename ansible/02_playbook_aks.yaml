@@ -1,0 +1,42 @@
+---
+- name: 'aks'
+  hosts: webservers
+  remote_user: adminUsername
+  become: true
+  vars_files:
+    - vars/01_vars.yaml
+
+  tasks:
+    - name: 'Instalar Podman y resto de componentes'
+      command: sudo dnf -y install podman httpd-tools openssl
+
+    - name: 'Creamos un directorio para nuestra aplicación Web'
+      command: mkdir aks
+      ignore_errors: True
+        
+
+    - name: 'Copiamos el fihero de la imagen que vamos a desplegar en AKS'
+      ansible.builtin.copy:
+        src: configFiles/ContainerfileAks
+        dest: ./aks
+        mode: '0644'
+        
+    - name: 'Renombramos el fichero'    
+      command: sudo mv ContainerfileAks Containerfile
+      
+    - name: 'Generamos nuestra imagen de contenedor'
+      command: sudo podman build -t webserveraks ./aks
+
+    - name: 'Etiquetamos la imagen para subirla a ACR'
+      command: sudo podman tag localhost/webserveraks:latest acrdevopspablo.azurecr.io/webserveraks:casopractico2aks
+      
+    - name: 'Nos autenticamos en ACR'
+      command: sudo podman login -u "{{ acr_admin_user }}" -p "{{ acr_admin_pass }}"  "{{ acr_host }}"
+      
+    - name: 'Subimos la imagen a ACR'
+      command: sudo podman push acrdevopspablo.azurecr.io/webserver:casopractico2aks
+
+    - name: 'Desplegamos nuestra aplicación en AKS a partir de la imagen que tenemos en ACR'
+      command: sudo kubectl apply -f azure-vote-all.yaml
+
+   
