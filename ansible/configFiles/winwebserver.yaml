@@ -1,0 +1,31 @@
+apiVersion: apps/v1 
+kind: Deployment 
+metadata: 
+  labels: 
+    app: win-webserver 
+  name: win-webserver 
+spec: 
+  replicas: 1 
+  selector: 
+    matchLabels: 
+      app: win-webserver 
+  template: 
+    metadata: 
+      labels: 
+        app: win-webserver 
+      name: win-webserver 
+    spec: 
+     containers: 
+      - name: windowswebserver 
+        image: mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2019 
+        ports:  
+          - containerPort: 80    
+        volumeMounts: 
+            - name: akshciscsi 
+              mountPath: "/mnt/akshciscsi" 
+     volumes: 
+        - name: akshciscsi 
+          persistentVolumeClaim: 
+            claimName:  pvc-akshci-csi 
+     nodeSelector: 
+      kubernetes.io/os: windows 
