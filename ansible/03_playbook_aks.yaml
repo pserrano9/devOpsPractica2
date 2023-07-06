@@ -1,6 +1,7 @@
 ---
 - name: 'aks'
   hosts: localhost
+  remote_user: adminUsername
   become: true
   vars_files:
     - vars/02_vars.yaml
