@@ -13,6 +13,9 @@
       #  - openshift
        # - pyyaml
         #- kubernetes 
+    - name: 'Instalar requisitos'
+      command 'sudo pip3 install anisble kubernetes'
+      
         
     - name: 'Definir los objectos deployment y servicios'
       ansible.builtin.template:
