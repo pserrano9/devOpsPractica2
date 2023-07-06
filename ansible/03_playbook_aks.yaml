@@ -6,11 +6,6 @@
   vars_files:
     - vars/02_vars.yaml
     
-- name: 'Despliegue de aplicación en AKS'
-  hosts: localhost
-  vars_files:
-    - vars/05_vars.yaml
-
   tasks:
     - name: 'Definir los objectos deployment y servicios'
         ansible.builtin.template:
