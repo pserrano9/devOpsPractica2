@@ -47,7 +47,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: azure-vote-front
-  namespace: example
+  namespace: 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
 spec:
   replicas: 1
   selector:
