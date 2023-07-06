@@ -13,10 +13,10 @@
 
     # Instalamos el cliente de AKS
     - name: 'Instalar AKS Cli - Paso 1'
-      command: curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+      command: sudo curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 
     - name: 'Instalar AKS Cli - Paso 2'
-      command: chmod +x ./kubectl
+      command: sudo chmod +x ./kubectl
       
     - name: 'Instalar AKS Cli - Paso 3'
       command: sudo mv ./kubectl /usr/local/bin/kubectl
