@@ -8,7 +8,7 @@
     
   tasks:
     - name: 'Definir los objectos deployment y servicios'
-        ansible.builtin.template:
+      ansible.builtin.template:
         src: templates/stateless.j2
         dest: "{{ directorio_trabajo }}/{{ aplicacion.definicion }}"
 
