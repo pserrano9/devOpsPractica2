@@ -11,8 +11,12 @@
       ansible.builtin.template:
         src: templates/stateless.j2
         dest: "{{ directorio_trabajo }}/{{ aplicacion.definicion }}"
+  
+    - name: 'Creamos un directorio de trabajo'
+      command: mkdir aks
+      ignore_errors: True    
     
-    - name: 'Crear el namespace de trabajo'
+    - name: 'test'
       kubernetes.core.k8s:
         kind: Namespace
         name: "{{ k8s_namespace }}"
