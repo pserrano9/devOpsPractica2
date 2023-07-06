@@ -14,26 +14,32 @@
     # Instalamos el cliente de AKS
     - name: 'Instalar AKS Cli - Paso 1'
       command: sudo curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-
+      ignore_errors: True
+      
     - name: 'Instalar AKS Cli - Paso 2'
       command: sudo chmod +x ./kubectl
+      ignore_errors: True
       
     - name: 'Instalar AKS Cli - Paso 3'
       command: sudo mv ./kubectl /usr/local/bin/kubectl
-
+      ignore_errors: True
+      
     # Instalamos el cliente de Azure
     - name: 'Instalar AZ Cli - Paso 1'
       command: sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+      ignore_errors: True
       
     - name: 'Instalar AZ Cli - Paso 2'
       command: sudo sh -c 'echo -e \N"[azure-cli]\Nnombre=Azure CLI\nbaseurl=https://packages.microsoft.com/yumrepos/azure-cli\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/azure-cli.repo'
-
+      ignore_errors: True
+      
     - name: 'Instalar AZ Cli - Paso 3'
       command: yum check-update
+      ignore_errors: True
       
     - name: 'Instalar AZ Cli - Paso 4'
       command: sudo yum install -y azure-cli
-
+      ignore_errors: True
     # Descargamos una aplicación de ejemplo  
     #- git:
       #repo: https://github.com/Azure-Samples/azure-voting-app-redis.git
@@ -81,7 +87,7 @@
     
     - name: 'Conectamos con nuestro AKS'
       command: sudo az aks get-credentials --resource-group kubernetes_rg --name cluster 
-
+      ignore_errors: True
    # - name: 'Desplegamos nuestra aplicación en AKS a partir de la imagen que tenemos en ACR'
     #  command: kubectl apply -f aks/azure-vote-all-in-one-redis.yaml
 
