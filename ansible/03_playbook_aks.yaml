@@ -1,4 +1,11 @@
 ---
+- name: 'aks'
+  hosts: webservers
+  remote_user: adminUsername
+  become: true
+  vars_files:
+    - vars/02_vars.yaml
+    
 - name: 'Despliegue de aplicación en AKS'
   hosts: localhost
   vars_files:
@@ -19,4 +26,3 @@
       kubernetes.core.k8s:
         state: present
         template: "{{ directorio_trabajo }}/{{ aplicacion.definicion }}"
-      
