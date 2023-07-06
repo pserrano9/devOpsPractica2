@@ -10,7 +10,7 @@
     - name: 'Definir los objectos deployment y servicios'
       template:
         src: templates/stateless.j2
-        dest: /tmp/{{ aplicacion.definicion }}"
+        dest: /tmp/stateless.yaml
 
     - name: 'Crear el namespace de trabajo'
       kubernetes.core.k8s:
@@ -20,4 +20,4 @@
     - name: 'Crear Deployments y servicios de la aplicación'
       kubernetes.core.k8s:
         state: present
-        template: "{{ directorio_trabajo }}/{{ aplicacion.definicion }}"
+        template: /tmp/stateless.yaml
