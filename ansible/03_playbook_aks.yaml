@@ -1,22 +1,11 @@
 ---
 - name: 'aks'
-  hosts: webservers
-  remote_user: adminUsername
+  hosts: localhost
   become: true
   vars_files:
     - vars/02_vars.yaml
     
-  tasks:
-   # - name: install pre-requisites
-    #  pip:
-     # name:
-      #  - openshift
-       # - pyyaml
-        #- kubernetes 
-    - name: 'Instalar requisitos'
-      command: sudo pip3 install anisble kubernetes
-      ignore_errors: True
-       
+  tasks:       
     - name: 'Definir los objectos deployment y servicios'
       ansible.builtin.template:
         src: templates/stateless.j2
