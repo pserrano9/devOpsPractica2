@@ -13,7 +13,7 @@
         dest: "{{ directorio_trabajo }}/{{ aplicacion.definicion }}"
         
     - name: 'Crear namespace'
-      k8s:
+      kubernetes.core.k8s:
         kind: Namespace
         name: "{{ k8s_namespace}}"
       ignore_errors: True   
