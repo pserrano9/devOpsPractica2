@@ -7,7 +7,7 @@
     - vars/02_vars.yaml
 
   tasks:
-    - name: 'Definir los objectos deployment y servicios'
+   # - name: 'Definir los objectos deployment y servicios'
       template:
         src: templates/stateless.j2
         dest: /tmp/stateless.yaml
@@ -17,7 +17,7 @@
         kind: Namespace
         name: "{{ k8s_namespace }}"
 
-    - name: 'Crear Deployments y servicios de la aplicación'
+    #- name: 'Crear Deployments y servicios de la aplicación'
       kubernetes.core.k8s:
         state: present
         template: /tmp/stateless.yaml
