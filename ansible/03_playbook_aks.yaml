@@ -14,9 +14,8 @@
        # - pyyaml
         #- kubernetes 
     - name: 'Instalar requisitos'
-      command 'sudo pip3 install anisble kubernetes'
-      
-        
+      command: sudo pip3 install anisble kubernetes
+       
     - name: 'Definir los objectos deployment y servicios'
       ansible.builtin.template:
         src: templates/stateless.j2
