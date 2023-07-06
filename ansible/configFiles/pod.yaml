@@ -1,0 +1,12 @@
+apiVersion: v1        # It is of type String
+kind: Pod             # It is of type String
+Namespace: ata-namespace
+metadata:             # It is of type Dictionary
+  name: nginx
+  labels:
+    app: nginx
+    tier: frontend
+spec:                  # It is of type List and Array
+  containers:
+  - name: nginx
+    image: nginx
