@@ -19,7 +19,7 @@
       ignore_errors: True   
 
     - name: 'Crear Deployments y servicios de la aplicación'
-      k8s:
+      kubernetes.core.k8s:
         state: present
-        template: "{{ directorio_trabajo }}/{{ aplicacion.definicion }}"    
+        template: "{{ directorio_trabajo }}/{{ aplicacion.definicion }}" 
       
