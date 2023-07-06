@@ -1,5 +1,5 @@
 ---
-- name: 'Despliegue de aplicación en AKS'
+#- name: 'Despliegue de aplicación en AKS'
   hosts: webservers
   remote_user: adminUsername
   become: true
