@@ -12,7 +12,7 @@
         src: templates/stateless.j2
         dest: /tmp/stateless.yaml
 
-    - name: 'Crear el namespace de trabajo'
+    #- name: 'Crear el namespace de trabajo'
       kubernetes.core.k8s:
         kind: Namespace
         name: "{{ k8s_namespace }}"
