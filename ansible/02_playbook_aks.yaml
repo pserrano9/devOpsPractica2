@@ -35,18 +35,37 @@
       command: sudo yum install -y azure-cli
 
     # Descargamos una aplicación de ejemplo  
-    - git:
-      repo: https://github.com/Azure-Samples/azure-voting-app-redis.git
-      dest: /aks
-      archive: /tmp/ansible-examples.zip
+    #- git:
+      #repo: https://github.com/Azure-Samples/azure-voting-app-redis.git
+      #dest: /aks
+      #archive: /tmp/ansible-examples.zip
+      
       # sudo dnf -y install git
       
+    #- name: 'Copiamos el fichero yaml para desplegar la aplicación en AKS'
+     # ansible.builtin.copy:
+      #  src: configFiles/azure-vote-all-in-one-redis.yaml
+       # dest: ./aks
+        #mode: '0644'
+        
     - name: 'Copiamos el fichero yaml para desplegar la aplicación en AKS'
       ansible.builtin.copy:
-        src: configFiles/azure-vote-all-in-one-redis.yaml
+        src: configFiles/pvc-akshci-csi.yaml
         dest: ./aks
         mode: '0644'
-    
+
+    - name: 'Copiamos el fichero yaml para desplegar la aplicación en AKS'
+      ansible.builtin.copy:
+        src: configFiles/pvc-akshci-csi.yaml
+        dest: ./aks
+        mode: '0644'
+
+    - name: 'Copiamos el fichero yaml para desplegar la aplicación en AKS'
+      ansible.builtin.copy:
+        src: configFiles/winwebserver.yaml
+        dest: ./aks
+        mode: '0644'     
+            
     #- name: 'Generamos nuestra imagen de contenedor'
     #  command: sudo podman build -t webserveraks ./aks/azure-vote-all-in-one-redis
 
@@ -63,6 +82,6 @@
     - name: 'Conectamos con nuestro AKS'
       command: sudo az aks get-credentials --resource-group kubernetes_rg --name cluster 
 
-    - name: 'Desplegamos nuestra aplicación en AKS a partir de la imagen que tenemos en ACR'
-      command: kubectl apply -f aks/azure-vote-all-in-one-redis.yaml
+   # - name: 'Desplegamos nuestra aplicación en AKS a partir de la imagen que tenemos en ACR'
+    #  command: kubectl apply -f aks/azure-vote-all-in-one-redis.yaml
 
