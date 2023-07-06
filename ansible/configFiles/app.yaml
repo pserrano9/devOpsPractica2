@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: azure-vote-back
-  namespace: ejemplo-05
+  namespace: example
 spec:
   replicas: 1
   selector:
@@ -36,7 +36,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: azure-vote-back
-  namespace: ejemplo-05
+  namespace: example
 spec:
   ports:
   - port: 6379
@@ -47,7 +47,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: azure-vote-front
-  namespace: ejemplo-05
+  namespace: example
 spec:
   replicas: 1
   selector:
@@ -80,7 +80,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: azure-vote-front
-  namespace: ejemplo-05
+  namespace: example
 spec:
   type: LoadBalancer
   ports:
