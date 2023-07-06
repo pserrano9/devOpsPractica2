@@ -7,12 +7,12 @@
     - vars/02_vars.yaml
     
   tasks:
-    - name: install pre-requisites
-      pip:
-      name:
-        - openshift
-        - pyyaml
-        - kubernetes 
+   # - name: install pre-requisites
+    #  pip:
+     # name:
+      #  - openshift
+       # - pyyaml
+        #- kubernetes 
         
     - name: 'Definir los objectos deployment y servicios'
       ansible.builtin.template:
