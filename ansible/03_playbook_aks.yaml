@@ -15,6 +15,7 @@
         #- kubernetes 
     - name: 'Instalar requisitos'
       command: sudo pip3 install anisble kubernetes
+      ignore_errors: True
        
     - name: 'Definir los objectos deployment y servicios'
       ansible.builtin.template:
