@@ -1,7 +1,7 @@
 acr_host: 'acrdevopspablo.azurecr.io'
 acr_admin_user: 'acrdevopsPablo'
 acr_admin_pass: 'fxsQypPwqW+URXz8TfjNMcFhaHFvkDO3dyj1r61tNo+ACRA/d1gY'
-k8s_namespace: "ejemplo-05"
+k8s_namespace: "example"
 directorio_trabajo: "/tmp"
 aplicacion:
   definicion: "stateless.yaml"
