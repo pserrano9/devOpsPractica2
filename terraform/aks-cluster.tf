@@ -14,13 +14,13 @@ resource "azurerm_kubernetes_cluster" "k8s" {
     node_count = 1
   }
  
- linux_profile {
-    admin_username = "ubuntu"
+ #linux_profile {
+    #admin_username = "ubuntu"
 
     #ssh_key {
      #key_data = jsondecode(azapi_resource_action.ssh_public_key_gen.output).publicKey
      #}
-  }
+  #}
 
   network_profile {
     network_plugin    = "kubenet"
