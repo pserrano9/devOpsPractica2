@@ -24,3 +24,18 @@
       kubernetes.core.k8s:
        state: present
        template: "{{ directorio_trabajo }}/{{ aplicacion.definicion }}"
+
+    - name: 'Comprobamos los deployments del nuevo namespace'
+      command: sudo kubectl get deployment -n example
+      register: dep
+
+    - name: 'Comprobamos los Servicios'
+      command: sudo kubectl get svc -n example
+      register: sc
+
+    # Mostramos los deployments
+    - debug: dep
+
+    # Mostramos los Servicios
+    - debug: sc
+      
