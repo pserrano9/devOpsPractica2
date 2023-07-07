@@ -6,6 +6,10 @@
     - vars/02_vars.yaml
     
   tasks: 
+
+  # Falta subir las images a nuesto acr para poder modificar las variables y que la coja de ahi
+  # para subirla usamos un metodo de ansible
+  
     - name: 'Definir los objectos deployment y servicios'
       ansible.builtin.template:
        src: templates/stateless.j2
