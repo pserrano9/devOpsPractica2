@@ -10,19 +10,25 @@
     - name: 'Obtener las Credenciales aks'
       shell:: 'az aks get-credentials --resource-group XXX --name XXXXX --overwrite'  
       ignore_errors: True 
-     
-    - name: 'Definir los objectos deployment y servicios'
-      ansible.builtin.template:
-        src: templates/stateless.j2
-        dest: "{{ directorio_trabajo }}/{{ aplicacion.definicion }}"
-        
-    - name: 'Crear namespace'
-      kubernetes.core.k8s:
-        kind: Namespace
-        name: "{{ k8s_namespace}}"
-      ignore_errors: True   
 
-    - name: 'Crear Deployments y servicios de la aplicación'
-      kubernetes.core.k8s:
-        state: present
-        template: "{{ directorio_trabajo }}/{{ aplicacion.definicion }}" 
+    - name: 'Obtener un objeto de Servicio'
+      kubernetes.core.k8s_info:
+        api_version: v1
+        kind: Namespace
+      register: web_Service  
+     
+    #- name: 'Definir los objectos deployment y servicios'
+     # ansible.builtin.template:
+      #  src: templates/stateless.j2
+      #  dest: "{{ directorio_trabajo }}/{{ aplicacion.definicion }}"
+        
+   # - name: 'Crear namespace'
+    #  kubernetes.core.k8s:
+    #    kind: Namespace
+    #    name: "{{ k8s_namespace}}"
+    #  ignore_errors: True   
+
+   # - name: 'Crear Deployments y servicios de la aplicación'
+    #  kubernetes.core.k8s:
+     #   state: present
+     #   template: "{{ directorio_trabajo }}/{{ aplicacion.definicion }}" 
