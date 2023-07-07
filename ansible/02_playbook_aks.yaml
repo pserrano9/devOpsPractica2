@@ -8,7 +8,7 @@
     
   tasks: 
     - name: 'Obtener las Credenciales aks'
-      shell:: 'az aks get-credentials --resource-group XXX --name XXXXX --overwrite'  
+      shell:: 'az aks get-credentials --resource-group kubernetes_rg --name cluster --overwrite'  
       ignore_errors: True 
 
     - name: 'Obtener un objeto de Servicio'
