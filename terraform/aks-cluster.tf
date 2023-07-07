@@ -14,15 +14,7 @@ resource "azurerm_kubernetes_cluster" "k8s" {
     node_count = 1
   }
  
- #linux_profile {
-    #admin_username = "ubuntu"
-
-    #ssh_key {
-     #key_data = jsondecode(azapi_resource_action.ssh_public_key_gen.output).publicKey
-     #}
-  #}
-
-  network_profile {
+network_profile {
     network_plugin    = "kubenet"
     load_balancer_sku = "standard"
   }
@@ -32,6 +24,6 @@ resource "azurerm_kubernetes_cluster" "k8s" {
  resource "azurerm_role_assignment" "example" {
    scope                            = azurerm_container_registry.acr.id
    role_definition_name             = "AcrPull"
-   principal_id                     = azurerm_kubernetes_cluster.k8s.kubelet_identity[0].object_id
+   principal_id                     = azurerm_kubernetes_cluster.example.kubelet_identity[0].object_id
    skip_service_principal_aad_check = true
 }
