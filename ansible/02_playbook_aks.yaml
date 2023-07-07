@@ -6,7 +6,11 @@
   vars_files:
     - vars/02_vars.yaml
     
-  tasks:       
+  tasks: 
+    - name: 'Obtener las Credenciales aks'
+      shell:: 'az aks get-credentials --resource-group XXX --name XXXXX --overwrite'  
+      ignore_errors: True 
+     
     - name: 'Definir los objectos deployment y servicios'
       ansible.builtin.template:
         src: templates/stateless.j2
@@ -22,4 +26,3 @@
       kubernetes.core.k8s:
         state: present
         template: "{{ directorio_trabajo }}/{{ aplicacion.definicion }}" 
-      
