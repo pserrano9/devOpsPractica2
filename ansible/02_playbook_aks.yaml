@@ -6,6 +6,10 @@
     - vars/02_vars.yaml
     
   tasks: 
+
+    - name: 'Credenciales AZ'
+      command: sudo az aks get-credentials --resource-group kubernetes_rg --name cluster --overwrite-existing
+  
     - name: 'Definir los objectos deployment y servicios'
       ansible.builtin.template:
        src: templates/stateless.j2
