@@ -33,9 +33,8 @@
       command: sudo kubectl get svc -n example
       register: sc
 
-    # Mostramos los deployments
-    - debug: dep
+    - name: Mostramos los deployments
+      debug: dep
 
-    # Mostramos los Servicios
-    - debug: sc
-      
+     - name: Mostramos los deployments
+       debug: sc
