@@ -9,7 +9,7 @@
     - name: 'Definir los objectos deployment y servicios'
       ansible.builtin.template:
        src: templates/stateless.j2
-      dest: "{{ directorio_trabajo }}/{{ aplicacion.definicion }}"
+       dest: "{{ directorio_trabajo }}/{{ aplicacion.definicion }}"
         
    - name: 'Crear namespace'
      kubernetes.core.k8s:
