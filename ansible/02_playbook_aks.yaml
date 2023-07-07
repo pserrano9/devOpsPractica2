@@ -10,4 +10,8 @@
       ansible.builtin.template:
        src: templates/stateless.j2
        dest: "{{ directorio_trabajo }}/{{ aplicacion.definicion }}"
-        
+    
+    - name: 'Crear espacio de nombres'
+      kubernetes.core.k8s::
+        kind: Namespace
+        name: "{{ k8s_namespace}}"
