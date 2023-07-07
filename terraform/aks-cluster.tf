@@ -1,3 +1,13 @@
+# Creamos un Azure Container Registry
+resource "azurerm_container_registry" "acr" {
+  name = "acrdevopsPablo"
+  resource_group_name = azurerm_resource_group.rg.name
+  location = azurerm_resource_group.rg.location
+  sku = "Basic"
+  admin_enabled = true
+}
+
+# Creamos nuestro AKS
 resource "azurerm_kubernetes_cluster" "k8s" {
  location            = azurerm_resource_group.rg.location
  name                = "cluster"
@@ -24,6 +34,6 @@ network_profile {
  resource "azurerm_role_assignment" "example" {
    scope                            = azurerm_container_registry.acr.id
    role_definition_name             = "AcrPull"
-   principal_id                     = azurerm_kubernetes_cluster.example.kubelet_identity[0].object_id
+   principal_id                     = azurerm_kubernetes_cluster.k8s.kubelet_identity[0].object_id
    skip_service_principal_aad_check = true
 }
