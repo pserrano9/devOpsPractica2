@@ -33,8 +33,10 @@
       command: sudo kubectl get svc -n example
       register: sc
 
-    - name: Mostramos los deployments
-      debug: dep
+    - name: 'Mostramos los deployments'
+      debug:
+        msg: "Ansible Version: {{ dep.stdout }}"
 
-     - name: Mostramos los deployments
-       debug: sc
+     - name: 'Mostramos los Servicios'
+       debug:
+         msg: "Ansible Version: {{ sc.stdout }}"
