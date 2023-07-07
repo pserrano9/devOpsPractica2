@@ -7,20 +7,6 @@
     - vars/02_vars.yaml
     
   tasks: 
-    - name: 'Obtener las Credenciales aks'
-      shell:: 'az aks get-credentials --resource-group kubernetes_rg --name cluster --overwrite'  
-      ignore_errors: True 
-
-    - name: 'Obtener los namescaces de AKS'
-      kubernetes.core.k8s_info:
-        api_version: v1
-        kind: Namespace
-      register: namespace
-      
-      #Imprimirmos los NamesPace de AKS
-    - debug:
-        var: namespace
-     
     - name: 'Definir los objectos deployment y servicios'
       ansible.builtin.template:
         src: templates/stateless.j2
