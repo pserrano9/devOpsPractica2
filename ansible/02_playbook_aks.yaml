@@ -1,24 +1,35 @@
 ---
 - name: 'aks'
   hosts: localhost
-  remote_user: adminUsername
   become: true
   vars_files:
     - vars/02_vars.yaml
     
   tasks: 
-    - name: 'Definir los objectos deployment y servicios'
-      ansible.builtin.template:
-        src: templates/stateless.j2
-        dest: "{{ directorio_trabajo }}/{{ aplicacion.definicion }}"
-        
-    - name: 'Crear namespace'
-      kubernetes.core.k8s:
-        kind: Namespace
-        name: "{{ k8s_namespace}}"
-      ignore_errors: True   
+  - name: 'Configurar credenciales AZ'
+    command: sudo az aks get-credentials --resource-group kubernetes_rg --name cluster --overwrite-existing
+    
+  - name: 'Desplegamos aplicación en AKS'
+    command: sudo kubectl apply -f ConfigFiles/azure-vote.yaml  
 
-    - name: 'Crear Deployments y servicios de la aplicación'
-      kubernetes.core.k8s:
-       state: present
-       template: "{{ directorio_trabajo }}/{{ aplicacion.definicion }}"
+  - name: 'Comprobamos el servicio levantado'
+    command: sudo kubectl get service azure-vote-front
+    register: services
+
+  - debug: services
+  
+    #- name: 'Definir los objectos deployment y servicios'
+    #  ansible.builtin.template:
+    #    src: templates/stateless.j2
+    #    dest: "{{ directorio_trabajo }}/{{ aplicacion.definicion }}"
+        
+   # - name: 'Crear namespace'
+   #  kubernetes.core.k8s:
+   #     kind: Namespace
+   #     name: "{{ k8s_namespace}}"
+   #   ignore_errors: True   
+
+   # - name: 'Crear Deployments y servicios de la aplicación'
+   #   kubernetes.core.k8s:
+   #    state: present
+   #    template: "{{ directorio_trabajo }}/{{ aplicacion.definicion }}"
