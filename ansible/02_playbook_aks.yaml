@@ -12,12 +12,12 @@
        dest: "{{ directorio_trabajo }}/{{ aplicacion.definicion }}"
         
    - name: 'Crear namespace'
-     k8s:
+    kubernetes.core.k8s::
         kind: Namespace
         name: "{{ k8s_namespace}}"
-      ignore_errors: True   
+    ignore_errors: True   
 
     - name: 'Crear Deployments y servicios de la aplicación'
-      k8s:
+      kubernetes.core.k8s::
        state: present
        template: "{{ directorio_trabajo }}/{{ aplicacion.definicion }}"
