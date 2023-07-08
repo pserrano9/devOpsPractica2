@@ -4,7 +4,7 @@ aplicacion:
   definicion: "stateless.yaml"
   backend:
     nombre: app-back 
-    imagen: acrdevopspablo.azurecr.io/redis:casopractico
+    imagen: acrdevopspablo.azurecr.io/redis:casopractico2
     #imagen: mcr.microsoft.com/oss/bitnami/redis:6.0.8
     replicas: 1
     recursos:
@@ -17,7 +17,7 @@ aplicacion:
   frontend:
     nombre: app-front
     #imagen: mcr.microsoft.com/azuredocs/azure-vote-front:v1
-    imagen: acrdevopspablo.azurecr.io/front:casopractico
+    imagen: acrdevopspablo.azurecr.io/front:casopractico2
     replicas: 1
     recursos:
       cpu: 100m
