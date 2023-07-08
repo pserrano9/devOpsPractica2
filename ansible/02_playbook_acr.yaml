@@ -1,1 +1,5 @@
-
+---
+- name: 'Podman'
+  hosts: webservers
+  remote_user: adminUsername
+  become: true
