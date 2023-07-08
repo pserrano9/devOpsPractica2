@@ -36,7 +36,7 @@ resource "azurerm_user_assigned_identity" "aks" {
 }
 
 resource "azurerm_role_assignment" "aks_network" {
-  scope                = azurerm_resource_group.default.id
+  scope                = azurerm_resource_group.rg.id
   role_definition_name = "Network Contributor"
   principal_id         = azurerm_user_assigned_identity.aks.principal_id
 }
