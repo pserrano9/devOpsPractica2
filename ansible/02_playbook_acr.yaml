@@ -3,7 +3,7 @@
   hosts: webservers
   remote_user: adminUsername
   become: true
-    vars_files:
+  vars_files:
     - vars/01_vars.yaml
 
   tasks:
