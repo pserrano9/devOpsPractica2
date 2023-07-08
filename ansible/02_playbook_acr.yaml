@@ -8,4 +8,4 @@
 
    - name: 'Descargamos imagen que subiremos posteriormente a nuestro ACR'
     containers.podman.podman_image:
-      name: quay.io/bitnami/wildfly
+      name: mcr.microsoft.com/oss/bitnami/redis:6.0.8
