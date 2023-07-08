@@ -17,7 +17,7 @@ aplicacion:
   frontend:
     nombre: app-front
     #imagen: mcr.microsoft.com/azuredocs/azure-vote-front:v1
-    
+    imagen: acrdevopspablo.azurecr.io/front:casopractico2
     replicas: 1
     recursos:
       cpu: 100m
