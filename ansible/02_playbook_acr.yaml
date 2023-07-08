@@ -13,5 +13,5 @@
 
    - containers.podman.podman_tag:
       image: mcr.microsoft.com/oss/bitnami/redis
-    target_names:
-      - casopractico2  
+      target_names:
+        - casopractico2  
