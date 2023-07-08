@@ -3,3 +3,9 @@
   hosts: webservers
   remote_user: adminUsername
   become: true
+
+   tasks:
+
+   - name: 'Descargamos imagen que subiremos posteriormente a nuestro ACR'
+    containers.podman.podman_image:
+      name: quay.io/bitnami/wildfly
