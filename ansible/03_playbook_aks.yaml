@@ -7,20 +7,20 @@
     
   tasks: 
 
-    - name: 'Credenciales AZ'
+    - name: 'Regeneramos las credenciales AZ'
       command: sudo az aks get-credentials --resource-group kubernetes_rg --name cluster --overwrite-existing
   
-    - name: 'Definir los objectos deployment y servicios'
+    - name: 'Definimos los objectos deployment y servicios a partir de un template'
       ansible.builtin.template:
        src: templates/stateless.j2
        dest: "{{ directorio_trabajo }}/{{ aplicacion.definicion }}"
     
-    - name: 'Crear espacio de nombres'
+    - name: 'Creamos un nuevo espacio de nombres'
       kubernetes.core.k8s:
         kind: Namespace
         name: "{{ k8s_namespace}}"
         
-    - name: 'Crear Deployments y servicios de la aplicación'
+    - name: 'Creamos los Deployments y servicios de nuestra aplicación'
       kubernetes.core.k8s:
        state: present
        template: "{{ directorio_trabajo }}/{{ aplicacion.definicion }}"
