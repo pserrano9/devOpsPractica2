@@ -31,7 +31,7 @@ network_profile {
 
 resource "azurerm_user_assigned_identity" "aks" {
   location            = azurerm_resource_group.default.location
-  name                = aksIdentity"
+  name                = "aksIdentity"
   resource_group_name = azurerm_resource_group.default.name
 }
 
