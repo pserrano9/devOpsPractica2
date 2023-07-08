@@ -6,12 +6,19 @@
 
   tasks:
 
-   - name: 'Descargamos imagen que subiremos posteriormente a nuestro ACR'
+   - name: 'Descargamos imagen redis que subiremos posteriormente a nuestro ACR'
      containers.podman.podman_image:
        name: mcr.microsoft.com/oss/bitnami/redis
        tag: 6.0.8
 
-   - containers.podman.podman_tag:
-      image: mcr.microsoft.com/oss/bitnami/redis
-      target_names:
-        - casopractico2  
+   - name: 'Descargamos imagen redis que subiremos posteriormente a nuestro ACR'
+     containers.podman.podman_image:
+       name: mcr.microsoft.com/oss/bitnami/redis
+       tag: 6.0.8    
+
+   - name: 'Le ponemos el Tag a la imagen'
+     command: sudo podman tag mcr.microsoft.com/oss/bitnami/redis:6.0.8 acrdevopspablo.azurecr.io/redis:casopractico2
+
+   - 
+
+        
