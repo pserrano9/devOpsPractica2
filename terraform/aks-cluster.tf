@@ -30,9 +30,9 @@ network_profile {
 #}
 
 resource "azurerm_user_assigned_identity" "aks" {
-  location            = azurerm_resource_group.default.location
+  location            = azurerm_resource_group.rg.location
   name                = "aksIdentity"
-  resource_group_name = azurerm_resource_group.default.name
+  resource_group_name = azurerm_resource_group.rg.name
 }
 
 resource "azurerm_role_assignment" "aks_network" {
