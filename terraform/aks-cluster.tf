@@ -22,9 +22,16 @@ network_profile {
 }
 
  # Conectar ACR con AKS
- resource "azurerm_role_assignment" "example" {
-   scope                            = azurerm_container_registry.acr.id
-   role_definition_name             = "AcrPull"
-   principal_id                     = azurerm_kubernetes_cluster.k8s.kubelet_identity[0].object_id
-   skip_service_principal_aad_check = true
+# resource "azurerm_role_assignment" "example" {
+  # scope                            = azurerm_container_registry.acr.id
+ #  role_definition_name             = "AcrPull"
+ #  principal_id                     = azurerm_kubernetes_cluster.k8s.kubelet_identity[0].object_id
+ #  skip_service_principal_aad_check = true
+#}
+
+resource "azurerm_role_assignment" "aks_sp_container_registry" {
+  scope                = data.azurerm_container_registry.acr.id
+  role_definition_name = "AcrPull"
+  principal_id         = azuread_service_principal.k8s.object_id
+  skip_service_principal_aad_check = true
 }
