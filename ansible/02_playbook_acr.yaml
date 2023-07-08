@@ -17,18 +17,18 @@
      containers.podman.podman_image:
        name: mcr.microsoft.com/azuredocs/azure-vote-front
        tag: v1    
+   
+   - name: 'Le ponemos el Tag a la imagen redis para subirla a nuestro ACR'
+     command: sudo podman tag mcr.microsoft.com/oss/bitnami/redis:6.0.8 acrdevopspablo.azurecr.io/redis:casopractico2
+   
+   - name: 'Le ponemos el Tag a la imagen del front para subirla a nuestro ACR'
+     command: sudo podman tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 acrdevopspablo.azurecr.io/front:casopractico2
 
-    - name: 'Le ponemos el Tag a la imagen redis para subirla a nuestro ACR'
-      command: sudo podman tag mcr.microsoft.com/oss/bitnami/redis:6.0.8 acrdevopspablo.azurecr.io/redis:casopractico2
+   - name: 'Nos autenticamos en ACR'
+     command: sudo podman login -u "{{ acr_admin_user }}" -p "{{ acr_admin_pass }}"  "{{ acr_host }}"
+     
+   - name: 'Subimos la imagen a ACR'
+     command: sudo podman push acrdevopspablo.azurecr.io/redis:casopractico2
 
-    - name: 'Le ponemos el Tag a la imagen del front para subirla a nuestro ACR'
-      command: sudo podman tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 acrdevopspablo.azurecr.io/front:casopractico2
-
-    - name: 'Nos autenticamos en ACR'
-      command: sudo podman login -u "{{ acr_admin_user }}" -p "{{ acr_admin_pass }}"  "{{ acr_host }}"
-      
-    - name: 'Subimos la imagen a ACR'
-      command: sudo podman push acrdevopspablo.azurecr.io/redis:casopractico2
-
-    - name: 'Subimos la imagen a ACR'
-      command: sudo podman push acrdevopspablo.azurecr.io/front:casopractico2
+   - name: 'Subimos la imagen a ACR'
+     command: sudo podman push acrdevopspablo.azurecr.io/front:casopractico2
