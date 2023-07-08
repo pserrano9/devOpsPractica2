@@ -1,11 +1,12 @@
 ---
-- name: 'Podman'
+- name: 'acr'
   hosts: webservers
   remote_user: adminUsername
   become: true
 
-   tasks:
+  tasks:
 
    - name: 'Descargamos imagen que subiremos posteriormente a nuestro ACR'
-    containers.podman.podman_image:
-      name: mcr.microsoft.com/oss/bitnami/redis:6.0.8
+     containers.podman.podman_image:
+       name: mcr.microsoft.com/oss/bitnami/redis
+       tag: 6.0.8
