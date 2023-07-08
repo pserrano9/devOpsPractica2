@@ -1,10 +1,5 @@
-# Corrección automática
+# Estructura del Repositorio
 
-Para la corección automática el repositorio deberá tener la siguiente estructura:
-
-```console
-[jadebustos@archimedes cp2]$ tree .
-.
 ├── ansible
 │   ├── deploy.sh
 │   └── hosts
@@ -13,13 +8,10 @@ Para la corección automática el repositorio deberá tener la siguiente estruct
     ├── correccion-vars.tf
     └── credentials.tf
 
-2 directories, 5 files
-[jadebustos@archimedes cp2]$
-```
 
 ## Terraform
 
-+ Todo el código terraform se encontrará en el directorio **terraform**.
++ Todo el código terraform se encuentra en el directorio **terraform**.
 
 + Será necesaria la inclusión de un fichero llamado **correccion-vars.tf** teniendo únicamente el siguiente contenido:
 
@@ -87,8 +79,6 @@ Para la corección automática el repositorio deberá tener la siguiente estruct
   [nfs]
   nfs
   ```
-
-    > NOTA: Se pueden añadir tantas variables como se desee, pero la variable **ansible_user** debe estar definida.
 
 + Se deberá incluir un script bash llamdo **deploy.sh** que se encargará de ejecutar los playbooks de ansible en el orden correcto.
 
