@@ -13,12 +13,13 @@
 
    - name: 'Descargamos imagen redis que subiremos posteriormente a nuestro ACR'
      containers.podman.podman_image:
-       name: mcr.microsoft.com/oss/bitnami/redis
-       tag: 6.0.8    
+       name: mcr.microsoft.com/azuredocs/azure-vote-front
+       tag: v1    
 
-   - name: 'Le ponemos el Tag a la imagen'
+   - name: 'Le ponemos el Tag a la imagen redis para subirla a nuestro ACR'
      command: sudo podman tag mcr.microsoft.com/oss/bitnami/redis:6.0.8 acrdevopspablo.azurecr.io/redis:casopractico2
 
-   - 
+   - name: 'Le ponemos el Tag a la imagen del front para subirla a nuestro ACR'
+     command: sudo podman tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 acrdevopspablo.azurecr.io/front:casopractico2
 
         
