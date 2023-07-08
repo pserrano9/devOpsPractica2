@@ -13,7 +13,7 @@
        name: mcr.microsoft.com/oss/bitnami/redis
        tag: 6.0.8
 
-   - name: 'Descargamos imagen redis que subiremos posteriormente a nuestro ACR'
+   - name: 'Descargamos imagen para el frontal de la app que subiremos posteriormente a nuestro ACR'
      containers.podman.podman_image:
        name: mcr.microsoft.com/azuredocs/azure-vote-front
        tag: v1    
