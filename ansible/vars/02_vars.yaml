@@ -4,7 +4,8 @@ aplicacion:
   definicion: "stateless.yaml"
   backend:
     nombre: app-back 
-    imagen: acrdevopspablo.azurecr.io/redis:casopractico2
+    #imagen: acrdevopspablo.azurecr.io/redis:casopractico2
+    imagen: "{{ acr_host }}"/redis:casopractico2
     replicas: 1
     recursos:
       cpu: 100m
@@ -15,7 +16,8 @@ aplicacion:
     puerto: 6379
   frontend:
     nombre: app-front
-    imagen: acrdevopspablo.azurecr.io/front:casopractico2
+    #imagen: acrdevopspablo.azurecr.io/front:casopractico2
+    imagen: "{{ acr_host }}"/front:casopractico2
     replicas: 1
     recursos:
       cpu: 100m
